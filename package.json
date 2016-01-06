@@ -10,7 +10,7 @@
     "url": "https://github.com/bshamblen/lone-wolf",
     "type": "git"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "dependencies": {
     "bluebird": "3.0.6",

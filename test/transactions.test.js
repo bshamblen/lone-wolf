@@ -5,10 +5,9 @@ var api = require('./common').getApiClient();
 var insertedTransaction;
 
 describe('Transactions', function() {
-	this.timeout(10000);
+	this.timeout(30000);
 
 	it('Retrieve a Collection of Transactions', function(done) {
-		this.timeout(20000);
 		api.getTransactions()
 		.then(function(results) {
 			assert.equal(_.isArray(results), true);
@@ -17,6 +16,28 @@ describe('Transactions', function() {
 			assert.notEqual(results[0].PropertyTypeId, null);
 			assert.notEqual(results[0].ClassificationId, null);
 			assert.notEqual(results[0].Status, null);
+		})
+		.catch(function(err) {
+			console.log(err);
+			assert.equal(err, null);
+		})
+		.finally(function() {
+			done();
+		});
+	});
+
+	it('Find existing test transaction and deletes it', function(done) {
+		api.getTransactions({
+			$orderby:'CreatedTimestamp asc',
+			$skip: 0,
+			$filter: 'MLSAddress/StreetNumber eq \'123\' and MLSAddress/StreetName eq \'Main St\' and MLSAddress/PostalCode eq \'95125\' and SellPrice eq 1000000'
+		})
+		.then(function(results) {
+			if (_.isArray(results) && results.length === 1) {
+				return api.deleteTransaction(results[0].Id);
+			} else {
+				return null;
+			}
 		})
 		.catch(function(err) {
 			console.log(err);

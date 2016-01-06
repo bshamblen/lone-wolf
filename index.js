@@ -122,7 +122,7 @@ Lonewolf.prototype.generateTokenHeader = function(httpMethod, uri, requestDate, 
 
 Lonewolf.prototype.generateHeaderSignature = function(httpMethod, uri, requestDate, contentMD5) {
 	var signature = httpMethod + ':' +
-			uri + ':' +
+			decodeURIComponent(uri) + ':' +
 			requestDate + ':' +
 			contentMD5;
 
