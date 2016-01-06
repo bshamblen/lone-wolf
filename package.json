@@ -1,0 +1,30 @@
+{
+  "author": {
+    "name": "Brian Shamblen",
+    "email": "brian@shamblen.com",
+    "url": "http://github.com/bshamblen"
+  },
+  "main": "index.js",
+  "name": "lone-wolf",
+  "repository": {
+    "url": "https://github.com/bshamblen/lone-wolf",
+    "type": "git"
+  },
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "bluebird": "3.0.6",
+    "request": ">=2.9.0",
+    "underscore": "*",
+    "moment": "2.11.0",
+    "form-data": "1.0.0-rc3",
+    "uid2": "*"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "description": "Lone Wolf Real Estate Technologies API client"
+}

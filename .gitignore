@@ -1,0 +1,7 @@
+node_modules
+.tmp
+npm-debug.log
+
+.idea
+*.iml
+.DS_Store
