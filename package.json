@@ -10,8 +10,7 @@
     "url": "https://github.com/bshamblen/lone-wolf",
     "type": "git"
   },
-  "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "dependencies": {
     "bluebird": "3.0.6",
@@ -27,5 +26,6 @@
   "engines": {
     "node": "*"
   },
-  "description": "Lone Wolf Real Estate Technologies API client"
+  "description": "Lone Wolf Real Estate Technologies API client",
+  "license": "MIT"
 }
