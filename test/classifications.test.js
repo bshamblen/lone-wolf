@@ -13,13 +13,8 @@ describe('Classifications', function() {
 			assert.notEqual(results[0].Id, null);
 			assert.notEqual(results[0].Code, null);
 			assert.notEqual(results[0].Name, null);
-		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
 			done();
-		});
+		})
+		.catch(done);
 	});
 });

@@ -14,13 +14,8 @@ describe('Contact Types', function() {
 			assert.notEqual(results[0].Code, null);
 			assert.notEqual(results[0].Name, null);
 			assert.notEqual(results[0].CategoryCode, null);
-		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
 			done();
-		});
+		})
+		.catch(done);
 	});
 });

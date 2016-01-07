@@ -19,14 +19,9 @@ describe('Members', function() {
 			assert.notEqual(results[0].LastName, null);
 
 			firstMember = results[0];
-		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
 			done();
-		});
+		})
+		.catch(done);
 	});
 
 /* Can't test - don't have access

@@ -16,14 +16,9 @@ describe('Transactions', function() {
 			assert.notEqual(results[0].PropertyTypeId, null);
 			assert.notEqual(results[0].ClassificationId, null);
 			assert.notEqual(results[0].Status, null);
-		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
 			done();
-		});
+		})
+		.catch(done);
 	});
 
 	it('Find existing test transaction and deletes it', function(done) {
@@ -34,18 +29,15 @@ describe('Transactions', function() {
 		})
 		.then(function(results) {
 			if (_.isArray(results) && results.length === 1) {
-				return api.deleteTransaction(results[0].Id);
+				api.deleteTransaction(results[0].Id)
+				.then(function() {
+					done();
+				});
 			} else {
-				return null;
+				done();
 			}
 		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
-			done();
-		});
+		.catch(done);
 	});
 
 	it('Create a Transaction', function(done) {
@@ -90,17 +82,14 @@ describe('Transactions', function() {
 			assert.equal(results.SellPrice, 1000000);
 
 			insertedTransaction = results;
-		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
 			done();
-		});
+		})
+		.catch(done);
 	});
 
 	it('Retrieve a Transaction', function(done) {
+		assert.notEqual(insertedTransaction, null);
+
 		api.getTransaction(insertedTransaction.Id)
 		.then(function(results) {
 			assert.notEqual(results, null);
@@ -110,14 +99,9 @@ describe('Transactions', function() {
 			assert.equal(results.Status, insertedTransaction.Status);
 
 			//console.log(JSON.stringify(results, null, 4));
-		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
 			done();
-		});
+		})
+		.catch(done);
 	});
 
 /* Can't test - don't have access
@@ -137,6 +121,8 @@ describe('Transactions', function() {
 */
 
 	it('Update a Transaction', function(done) {
+		assert.notEqual(insertedTransaction, null);
+
 		var randomId = uid(8);
 
 		var updatedValues = {
@@ -147,27 +133,19 @@ describe('Transactions', function() {
 		.then(function(results) {
 			assert.equal(results.Id, insertedTransaction.Id);
 			assert.equal(results.MLSNumber, randomId);
-		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
 			done();
-		});
+		})
+		.catch(done);
 	});
 
 	it('Delete a Transaction', function(done) {
+		assert.notEqual(insertedTransaction, null);
+
 		api.deleteTransaction(insertedTransaction.Id)
 		.then(function(results) {
 			assert.notEqual(results, null);
-		})
-		.catch(function(err) {
-			console.log(err);
-			assert.equal(err, null);
-		})
-		.finally(function() {
 			done();
-		});
+		})
+		.catch(done);
 	});
 });
