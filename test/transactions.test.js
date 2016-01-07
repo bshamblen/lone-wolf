@@ -62,22 +62,18 @@ describe('Transactions', function() {
 				ProvinceCode: 'CA',
 				PostalCode: '95125',
 				CountryCode: 'US',
-				Country: 'United States'
 			},
 			Tiers: [
 				{
 					ClassificationId: 'I1LeQ4ZKZdwWWSWPdobXBQ==',
 					CloseDate: '2016-02-03',
-					Status: 'Open',
 					StatusCode: 'N',
 					SellPrice: 1000000,
 					AgentCommissions: [
 						{
 							AgentId: 'rXIMmtV5eC5YEHl5ntjzsg==',
-							End: 'Selling',
 							EndCode: 'S',
 							EndCount: 1,
-							CommissionPercentage: 0.03,
 							Commission: 30000
 						}
 					]
